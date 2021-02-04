@@ -10,6 +10,9 @@ Y_TRAIN_DATA = 'C:/Users/nishant/LTFS Hack/input/Train/y_train.csv'
 TRAIN_BUR = 'C:/Users/nishant/LTFS Hack/input/Train/train_bureau.csv'
 TEST_DATA = 'C:/Users/nishant/LTFS Hack/input/Test/test_da.csv'
 TEST_BUR = 'C:/Users/nishant/LTFS Hack/input/Test/test_bur.csv'
+
+TRAIN_BUR_CLEAN = 'C:/Users/nishant/LTFS Hack/input/Train/bureau_clean.csv'
+
 path = 'C:/Users/nishant/LTFS Hack/input/Train/'
 path_test = 'C:/Users/nishant/LTFS Hack/input/Test/'
 target_dict = { 'No Top-up Service' : 0 ,
