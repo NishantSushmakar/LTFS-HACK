@@ -12,7 +12,7 @@ TEST_DATA = 'C:/Users/nishant/LTFS Hack/input/Test/test_da.csv'
 TEST_BUR = 'C:/Users/nishant/LTFS Hack/input/Test/test_bur.csv'
 
 TRAIN_BUR_CLEAN = 'C:/Users/nishant/LTFS Hack/input/Train/bureau_clean.csv'
-
+TEST_BUR_CLEAN = 'C:/Users/nishant/LTFS Hack/input/Test/bureau_clean.csv'
 path = 'C:/Users/nishant/LTFS Hack/input/Train/'
 path_test = 'C:/Users/nishant/LTFS Hack/input/Test/'
 target_dict = { 'No Top-up Service' : 0 ,
@@ -24,3 +24,4 @@ target_dict = { 'No Top-up Service' : 0 ,
         '12-18 Months': 6 
         }
 
+train = 'c:/Users/nishant/LTFS Hack/input/Train/scaled_final_train.csv'

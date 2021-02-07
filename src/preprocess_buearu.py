@@ -44,7 +44,7 @@ def preprocess_bur(df):
     print('Most Frequent')
     columns_to_handle = ['DATE-REPORTED','DISBURSED-DT','CURRENT-BAL','OVERDUE-AMT','WRITE-OFF-AMT',
                          'ASSET_CLASS','REPORTED DATE - HIST','DPD - HIST','CUR BAL - HIST','AMT OVERDUE - HIST'
-                         ,'AMT PAID - HIST','TENURE']
+                         ,'AMT PAID - HIST','TENURE','DISBURSED-AMT/HIGH CREDIT']
     
     for col in columns_to_handle:
         k = df[col].value_counts().keys()[0]
@@ -64,18 +64,20 @@ def preprocess_bur(df):
     # LabelEncoders
     print("Label Encoder")
     
-    columns_to_le = ['SELF-INDICATOR','MATCH-TYPE','ACCT-TYPE','CONTRIBUTOR-TYPE','OWNERSHIP-IND',
+    columns_to_le = ['SELF-INDICATOR','ACCT-TYPE','CONTRIBUTOR-TYPE','OWNERSHIP-IND',
                      'ACCOUNT-STATUS','INSTALLMENT-FREQUENCY','ASSET_CLASS']
     
     
     for col in columns_to_le: 
         try:
             le = LabelEncoder()
-            df[col] = le.fit_transform(df[col])
+            le.classes_ = np.load(os.path.join(config.path,f'{col}.npy'),allow_pickle=True)
+            df[col] = le.transform(df[col])
             print(col)
-            np.save(os.path.join(config.path,f'{col}.npy'),le.classes_)
+            #np.save(os.path.join(config.path,f'{col}.npy'),le.classes_)
         except:
             print('Error')
+            print(le.classes_)
             print(df[col].value_counts())
             
             
@@ -92,6 +94,6 @@ def preprocess_bur(df):
 
 if __name__ == '__main__':
     
-   df = pd.read_csv(config.TRAIN_BUR)
+   df = pd.read_csv(config.TEST_BUR)
    df = preprocess_bur(df)
-   df.to_csv(os.path.join(config.path,'bureau_clean.csv'),index=False)
+   df.to_csv(os.path.join(config.path_test,'bureau_clean.csv'),index=False)
